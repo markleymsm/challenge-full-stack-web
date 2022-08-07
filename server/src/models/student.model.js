@@ -1,7 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
     const Student = sequelize.define("student", {
         academic_record: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true
         },
         name: {
             type: Sequelize.STRING

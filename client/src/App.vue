@@ -2,13 +2,13 @@
   <v-app>
     <v-app-bar app dark>
       <div class="d-flex align-center mr-2">
-        Markley
+        Modulo Acadêmico
       </div>
       <v-btn to="/students" text>
-        Estudantes
+        Alunos
       </v-btn>
       <v-btn to="/add" text>
-        Add
+        Cadastrar alunos
       </v-btn>
     </v-app-bar>
     <v-main>

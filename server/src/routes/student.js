@@ -2,11 +2,11 @@
 module.exports = (app) => {
     let controller = require('../controllers/studentController')();
 
-    app.get('/student/', controller.index);
-    app.get('/student/:id', controller.view);
-    app.post('/student/', controller.add);
-    app.put('/student/:id', controller.edit);
-    app.delete('/student/:id', controller.delete);
+    app.get('/api/students/', controller.index);
+    app.get('/api/students/:id', controller.view);
+    app.post('/api/students/', controller.add);
+    app.put('/api/students/:id', controller.edit);
+    app.delete('/api/students/:id', controller.delete);
 
 
 }

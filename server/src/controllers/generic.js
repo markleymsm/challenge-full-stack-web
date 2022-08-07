@@ -5,7 +5,7 @@ function GenericController(model) {
 
   this.index = async (req, res) => {
     try {
-      let result = await this.service.list()
+      let result = await this.service.list(req.query.name)
       return res.send(result);
     } catch (e) {
       return res.status(422).send({error: "Erro generic: " + e});

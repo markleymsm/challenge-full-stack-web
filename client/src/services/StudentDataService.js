@@ -1,5 +1,5 @@
 import http from "../http-common";
-class TutorialDataService {
+class StudentDataService {
   getAll() {
     return http.get("/students");
   }
@@ -22,4 +22,4 @@ class TutorialDataService {
     return http.get(`/students?name=${title}`);
   }
 }
-export default new TutorialDataService();
+export default new StudentDataService();

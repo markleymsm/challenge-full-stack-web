@@ -1,12 +1,14 @@
+const db = require("../models");
+const Op = db.Sequelize.Op;
 
 function CrudService(model) {
   this.model = model;
 }
 
-CrudService.prototype.list = async function () {
+CrudService.prototype.list = async function (name) {
   try {
-    let model = await this.model.findAll();
-    return {data: model};
+    let condition = name ? {name: {[Op.like]: `%${name}%`}} : null;
+    return await this.model.findAll({where: condition});
   } catch (e) {
     throw e;
   }
@@ -14,8 +16,7 @@ CrudService.prototype.list = async function () {
 
 CrudService.prototype.get = async function (id) {
   try {
-    let model = await this.model.findByPk(id);
-    return {data: model};
+    return await this.model.findByPk(id);
   } catch (e) {
     throw e;
   }
@@ -23,8 +24,7 @@ CrudService.prototype.get = async function (id) {
 
 CrudService.prototype.insert = async function (data) {
   try {
-    let model = await this.model.create(data);
-    return {data: model};
+    return await this.model.create(data);
   } catch (e) {
     throw e;
   }
@@ -32,8 +32,7 @@ CrudService.prototype.insert = async function (data) {
 
 CrudService.prototype.update = async function (id, data) {
   try {
-    let model = await this.model.update(data, {where: {id: id}})
-    return {data: model}
+    return await this.model.update(data, {where: {id: id}})
   } catch (e) {
     throw e;
   }
@@ -41,8 +40,7 @@ CrudService.prototype.update = async function (id, data) {
 
 CrudService.prototype.delete = async function (id) {
   try {
-    let model = await this.model.destroy({where: {id: id}});
-    return {data: model}
+    return await this.model.destroy({where: {id: id}})
   } catch (e) {
     throw e;
   }
